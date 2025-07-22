@@ -576,7 +576,7 @@ onMounted(async () => {
     }
 
     console.log('Setting up Echo channel listener...');
-    const channel = Echo.private('App.Models.User.' + (props.user_id || 1));
+    const channel = Echo.private('App.Models.User.' + (props.user_id || userId || 1));
 
     // Log channel events
     channel.subscribed(() => {
