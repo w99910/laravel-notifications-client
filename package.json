@@ -1,0 +1,32 @@
+{
+    "name": "notification",
+    "private": true,
+    "version": "0.0.0",
+    "type": "module",
+    "main": "./dist/notification.umd.js",
+    "module": "./dist/notification.es.js",
+    "scripts": {
+        "dev": "vite",
+        "build": "vite build",
+        "preview": "vite preview"
+    },
+    "devDependencies": {
+        "@tailwindcss/vite": "^4.1.11",
+        "@vitejs/plugin-vue": "^6.0.0",
+        "laravel-echo": "^2.1.6",
+        "pusher-js": "^8.4.0",
+        "tailwindcss": "^4.1.11",
+        "vite": "^7.0.4",
+        "vite-plugin-css-injected-by-js": "^3.5.2",
+        "vue": "^3.5.17"
+    },
+    "files": [
+        "dist"
+    ],
+    "exports": {
+        ".": {
+            "import": "./dist/notification.es.js",
+            "require": "./dist/notification.umd.js"
+        }
+    }
+}
