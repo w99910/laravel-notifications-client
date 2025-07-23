@@ -181,9 +181,9 @@ class NotificationAPI {
 // Create and export default instance
 const notificationAPI = new NotificationAPI(
   window.location.origin, // Base URL
-  process?.env?.MIX_NOTIFICATION_API_PREFIX ||
-    import.meta.env?.VITE_NOTIFICATION_API_PREFIX ||
-    "notifications" // Prefix - can be configured
+  typeof process !== "undefined"
+    ? process.env?.MIX_NOTIFICATION_API_PREFIX
+    : import.meta.env?.VITE_NOTIFICATION_API_PREFIX || "notifications" // Prefix - can be configured
 );
 
 export default notificationAPI;

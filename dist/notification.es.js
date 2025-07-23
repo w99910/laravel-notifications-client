@@ -245,7 +245,7 @@ class le {
 const C = new le(
   window.location.origin,
   // Base URL
-  process?.env?.MIX_NOTIFICATION_API_PREFIX || oe?.VITE_NOTIFICATION_API_PREFIX || "notifications"
+  typeof process < "u" ? process.env?.MIX_NOTIFICATION_API_PREFIX : oe?.VITE_NOTIFICATION_API_PREFIX || "notifications"
   // Prefix - can be configured
 ), ne = (h, t) => {
   const u = h.__vccOpts || h;
