@@ -36,7 +36,7 @@
                     :class="isDarkMode ? 'border-b border-gray-700' : 'border-b border-gray-200'">
                     <div class="flex items-center">
                         <h3 class="text-lg font-semibold" :class="isDarkMode ? 'text-white' : 'text-gray-900'">
-                            Notifications</h3>
+                            {{ getLocale('Notifications') }}</h3>
                         <span v-if="isExpanded" class="ml-2 text-sm"
                             :class="isDarkMode ? 'text-gray-400' : 'text-gray-500'">({{ notifications.length }})</span>
                     </div>
@@ -85,7 +85,7 @@
                                     ? 'border-transparent text-gray-400 hover:text-gray-200 hover:bg-gray-800'
                                     : 'border-transparent text-gray-500 hover:text-gray-700 hover:bg-gray-50'
                         ]">
-                        {{ category.name }}
+                        {{ getLocale(category.name) }}
                         <span v-if="category.count > 0"
                             class="ml-2 bg-blue-500 text-white text-xs rounded-full px-2 py-1">
                             {{ category.count }}
@@ -106,7 +106,7 @@
                                 d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z">
                             </path>
                         </svg>
-                        Loading notifications...
+                        <span>{{ getLocale('Loading notifications') }}...</span>
                     </div>
 
                     <!-- Error State -->
@@ -116,7 +116,7 @@
                             :class="isDarkMode
                                 ? 'bg-gray-700 hover:bg-gray-600 text-gray-200'
                                 : 'bg-gray-100 hover:bg-gray-200 text-gray-700'">
-                            Try Again
+                            {{ getLocale('Try Again') }}
                         </button>
                     </div>
 
@@ -124,13 +124,14 @@
                     <div v-else-if="filteredNotifications.length === 0" class="p-6 text-center"
                         :class="isDarkMode ? 'text-gray-400' : 'text-gray-500'">
                         <div class="mb-2">
-                            {{ activeCategory === 'unread' ? 'No unread notifications' :
-                                activeCategory === 'read' ? 'No read notifications' :
-                                    notifications.length === 0 ? 'No notifications yet' : 'No notifications' }}
+                            {{ activeCategory === 'unread' ? getLocale('No unread notifications') :
+                                activeCategory === 'read' ? getLocale('No read notifications') :
+                                    notifications.length === 0 ? getLocale('No notifications yet') :
+                                        getLocale('No notifications') }}
                         </div>
                         <button v-if="activeCategory !== 'inbox' && notifications.length > 0"
                             @click="activeCategory = 'inbox'" class="text-sm text-blue-500 hover:text-blue-600">
-                            View all notifications
+                            {{ getLocale('View all notifications') }}
                         </button>
                         <div v-else-if="notifications.length === 0" class="mt-4">
                             <svg class="w-12 h-12 mx-auto mb-4 opacity-50"
@@ -139,7 +140,7 @@
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                     d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
                             </svg>
-                            <p class="text-sm">You're all caught up!</p>
+                            <p class="text-sm">{{ getLocale("You're all caught up!") }}</p>
                         </div>
                     </div>
 
@@ -184,7 +185,7 @@
                                 <div class="flex items-center justify-between">
                                     <p class="text-sm font-medium"
                                         :class="isDarkMode ? 'text-gray-100' : 'text-gray-900'">
-                                        {{ notification.title }}
+                                        {{ getLocale(notification.title) }}
                                     </p>
                                     <div class="flex items-center space-x-2">
                                         <span class="text-xs" :class="isDarkMode ? 'text-gray-400' : 'text-gray-500'">
@@ -214,12 +215,12 @@
                                                     @click="markAsRead(notification.id)"
                                                     class="w-full text-left px-4 py-2 text-sm hover:bg-opacity-80 transition-colors"
                                                     :class="isDarkMode ? 'text-gray-200 hover:bg-gray-700' : 'text-gray-700 hover:bg-gray-100'">
-                                                    Mark as read
+                                                    {{ getLocale('Mark as Read') }}
                                                 </button>
                                                 <button @click="deleteNotification(notification.id)"
                                                     class="w-full text-left px-4 py-2 text-sm text-red-500 hover:bg-opacity-80 transition-colors"
                                                     :class="isDarkMode ? 'hover:bg-gray-700' : 'hover:bg-gray-100'">
-                                                    Delete
+                                                    {{ getLocale('Delete') }}
                                                 </button>
                                             </div>
                                         </div>
@@ -237,8 +238,8 @@
                                 <div v-if="notification.progress !== undefined && notification.progress !== null"
                                     class="mt-2">
                                     <div class="flex items-center justify-between mb-1">
-                                        <span class="text-xs"
-                                            :class="isDarkMode ? 'text-gray-400' : 'text-gray-500'">Progress</span>
+                                        <span class="text-xs" :class="isDarkMode ? 'text-gray-400' : 'text-gray-500'">{{
+                                            getLocale('Progress') }}</span>
                                         <span class="text-xs font-medium"
                                             :class="isDarkMode ? 'text-gray-300' : 'text-gray-700'">
                                             {{ notification.progress }}%
@@ -267,7 +268,7 @@
                                             backgroundColor: action.backgroundColor || '#f3f4f6',
                                             color: getContrastColor(action.backgroundColor)
                                         }">
-                                        {{ action.label }}
+                                        {{ getLocale(action.label) }}
                                     </a>
                                 </div>
 
@@ -297,7 +298,7 @@
                     <button @click="toggleExpandedView" class="w-full text-center text-sm font-medium" :class="isDarkMode
                         ? 'text-blue-400 hover:text-blue-300'
                         : 'text-blue-600 hover:text-blue-800'">
-                        {{ isExpanded ? 'Collapse view' : 'View all notifications' }}
+                        {{ isExpanded ? getLocale('Collapse View') : getLocale('View all notifications') }}
                     </button>
                 </div>
             </div>
@@ -333,8 +334,16 @@ const props = defineProps({
         type: Array,
         default: () => [{ id: 'inbox', name: 'All', count: 6 },
         { id: 'unread', name: 'New', count: 0 }]
+    },
+    locales: {
+        type: Object,
+        default: () => { }
     }
 });
+
+const getLocale = (key) => {
+    return props.locales[key] || key; // Fallback to key if locale not found
+};
 
 // Emits
 const emit = defineEmits(['notification-read', 'action-clicked', 'all-read', 'all-deleted']);
@@ -391,7 +400,7 @@ const loadNotifications = async () => {
         notifications.value = response.data || response; // Handle different response formats
         console.log(notifications.value)
     } catch (err) {
-        error.value = 'Failed to load notifications';
+        error.value = getLocale('Failed to load notifications');
         console.error('Error loading notifications:', err);
 
         // Fallback to sample data if API fails
@@ -437,7 +446,7 @@ const markAllAsRead = async () => {
 
         emit('all-read');
     } catch (err) {
-        error.value = 'Failed to mark notifications as read';
+        error.value = getLocale('Failed to mark all as read');
         console.error('Error marking all as read:', err);
     } finally {
         isLoading.value = false;
@@ -446,7 +455,7 @@ const markAllAsRead = async () => {
 
 const deleteAllNotifications = async () => {
     // Show confirmation dialog
-    if (!confirm('Are you sure you want to delete all notifications? This action cannot be undone.')) {
+    if (!confirm(getLocale('Are you sure you want to delete all notifications? This action cannot be undone.'))) {
         return;
     }
 
@@ -460,7 +469,7 @@ const deleteAllNotifications = async () => {
 
         emit('all-deleted');
     } catch (err) {
-        error.value = 'Failed to delete all notifications';
+        error.value = getLocale('Failed to delete all notifications');
         console.error('Error deleting all notifications:', err);
     } finally {
         isLoading.value = false;
@@ -478,7 +487,7 @@ const markAsRead = async (notificationId) => {
             emit('notification-read', notification);
         }
     } catch (err) {
-        error.value = 'Failed to mark notification as read';
+        error.value = getLocale('Failed to mark notification as read');
         console.error('Error marking notification as read:', err);
     }
 };
@@ -493,7 +502,7 @@ const deleteNotification = async (notificationId) => {
             notifications.value.splice(index, 1);
         }
     } catch (err) {
-        error.value = 'Failed to delete notification';
+        error.value = getLocale('Failed to delete notification');
         console.error('Error deleting notification:', err);
     }
 };
@@ -511,7 +520,7 @@ const handleAction = async (action, notification) => {
     }
 
     // Handle actions
-    if (action.label.toLowerCase() === 'accept' || action.label.toLowerCase() === 'decline') {
+    if (action.label.toLowerCase() === getLocale('accept') || action.label.toLowerCase() === getLocale('decline')) {
         // Remove notification after action
         await deleteNotification(notification.id);
     }
@@ -606,31 +615,6 @@ onMounted(async () => {
     timeTracker = setInterval(() => {
         currentTime.value = Date.now();
     }, 60000); // Update every 60 seconds (1 minute)
-
-    setTimeout(() => {
-        // Simulate progressive updates for system notification
-        const systemNotification = notifications.value.find(n => n.id === 5);
-        if (systemNotification && systemNotification.progress < 100) {
-            let currentProgress = systemNotification.progress;
-
-            const progressInterval = setInterval(() => {
-                currentProgress += Math.random() * 15; // Random increment between 0-15%
-
-                if (currentProgress >= 100) {
-                    currentProgress = 100;
-                    systemNotification.progress = currentProgress;
-                    systemNotification.message = 'File processing completed successfully!';
-                    systemNotification.status = 'success';
-                    systemNotification.actions = [
-                        { label: 'View', backgroundColor: '#3b82f6', url: '#' }
-                    ];
-                    clearInterval(progressInterval);
-                } else {
-                    systemNotification.progress = Math.floor(currentProgress);
-                }
-            }, 2000); // Update every 2 seconds
-        }
-    }, 3000); // Start after 3 seconds
 });
 
 onUnmounted(() => {
