@@ -147,7 +147,8 @@
                     <!-- Notifications -->
                     <div v-else>
                         <div v-for="notification in filteredNotifications" :key="notification.id"
-                            @click="markAsRead(notification.id)" class="flex items-start p-4 transition-colors" :class="[
+                            @click="markAsRead(notification.id)"
+                            class="flex items-start cursor-pointer p-4 transition-colors" :class="[
                                 { 'border-b last:border-b-0': true },
                                 isDarkMode
                                     ? { 'hover:bg-gray-800 border-gray-700': true, 'bg-blue-900/10': !notification.read_at }
