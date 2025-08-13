@@ -264,7 +264,7 @@
                                 <!-- Action Buttons -->
                                 <div v-if="notification.actions" class="flex flex-wrap gap-2 mt-3">
                                     <a v-for="action in notification.actions" :key="action.label" :href="action.url"
-                                        @click.prevent="handleAction(action, notification)"
+                                        @click.stop="handleAction(action, notification)"
                                         class="px-3 py-1 text-xs font-medium rounded transition-colors" :style="{
                                             backgroundColor: action.backgroundColor || '#f3f4f6',
                                             color: getContrastColor(action.backgroundColor)
