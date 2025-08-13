@@ -263,14 +263,14 @@
 
                                 <!-- Action Buttons -->
                                 <div v-if="notification.actions" class="flex flex-wrap gap-2 mt-3">
-                                    <a v-for="action in notification.actions" :key="action.label" :href="action.url"
+                                    <button v-for="action in notification.actions" :key="action.label"
                                         @click.stop="handleAction(action, notification)"
                                         class="px-3 py-1 text-xs font-medium rounded transition-colors" :style="{
                                             backgroundColor: action.backgroundColor || '#f3f4f6',
                                             color: getContrastColor(action.backgroundColor)
                                         }">
                                         {{ getLocale(action.label) }}
-                                    </a>
+                                    </button>
                                 </div>
 
                                 <!-- Attachment -->
@@ -528,7 +528,13 @@ const handleAction = async (action, notification) => {
 
     // Navigate if URL exists and not '#'
     if (action.url && action.url !== '#') {
-        window.location.href = action.url;
+        const link = document.createElement('a');
+        link.href = action.url;
+        link.target = '_blank'; // Open in new tab
+        link.rel = 'noopener noreferrer'; // Security best practice
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
     }
 };
 
