@@ -331,8 +331,8 @@ const props = defineProps({
     // show categories
     categories: {
         type: Array,
-        default: () => [{ id: 'inbox', name: 'All', count: 6 },
-        { id: 'unread', name: 'New', count: 0 }]
+        default: () => [
+            { id: 'unread', name: 'New', count: 0 }, { id: 'inbox', name: 'All', count: 6 }]
     },
     locales: {
         type: Object,
