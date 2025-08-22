@@ -350,7 +350,7 @@ const emit = defineEmits(['notification-read', 'action-clicked', 'all-read', 'al
 // Reactive state
 const isOpen = ref(false);
 const isExpanded = ref(false);
-const activeCategory = ref('inbox');
+const activeCategory = ref('unread');
 const isDarkMode = ref(false);
 const notificationContainer = ref(null);
 const currentTime = ref(Date.now()); // Add reactive timestamp for time updates
