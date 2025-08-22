@@ -378,14 +378,14 @@ const filteredNotifications = computed(() => {
 
 const notificationCategories = computed(() => [
     {
-        id: 'inbox',
-        name: 'All',
-        count: 0
-    },
-    {
         id: 'unread',
         name: 'New',
         count: unreadCount.value
+    },
+    {
+        id: 'inbox',
+        name: 'All',
+        count: 0
     },
 ]);
 
