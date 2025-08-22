@@ -190,7 +190,7 @@
                                     </p>
                                     <div class="flex items-center space-x-2">
                                         <span class="text-xs" :class="isDarkMode ? 'text-gray-400' : 'text-gray-500'">
-                                            {{ formatTime(notification.created_at, currentTime.value) }}
+                                            {{ formatTime(notification.created_at, currentTime.value, locales) }}
                                         </span>
 
                                         <!-- Notification Actions Menu -->
@@ -314,8 +314,6 @@ import {
     getTypeIconBg,
     getTypeIconColor,
     getContrastColor,
-    checkUserColorScheme,
-    saveThemePreference,
     createSampleNotifications
 } from './utils/notificationUtils.js';
 import notificationAPI from './api/notificationAPI.js';
