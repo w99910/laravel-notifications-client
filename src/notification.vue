@@ -603,7 +603,7 @@ onMounted(async () => {
 
     channel
         .notification((notification) => {
-            console.log('New notification received:', notification);
+            // console.log('New notification received:', notification);
 
             // check if notification is already in the list
             const existingNotification = notifications.value.find(n => n.id === notification.id);
@@ -613,6 +613,16 @@ onMounted(async () => {
             } else {
                 // Add new notification
                 notifications.value.unshift(notification);
+
+                setTimeout(async () => {
+                    // pull notifications automatically after 1 minute in case there has been error in delivery
+                    await loadNotifications();
+
+                    setTimeout(async () => {
+                        // pull notifications automatically after 5 minutes
+                        await loadNotifications();
+                    }, 5 * 60 * 1000);
+                }, 60 * 1000);
             }
         });
 
