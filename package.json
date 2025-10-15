@@ -27,6 +27,7 @@
         ".": {
             "import": "./dist/notification.es.js",
             "require": "./dist/notification.umd.js"
-        }
+        },
+        "./style.css": "./dist/notification.css"
     }
 }
