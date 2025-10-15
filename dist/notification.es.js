@@ -1,10 +1,10 @@
-import { ref as k, computed as E, onMounted as G, onUnmounted as Q, createElementBlock as i, openBlock as c, createElementVNode as t, createVNode as Z, normalizeClass as u, createCommentVNode as b, toDisplayString as h, Transition as ee, withCtx as te, withModifiers as S, Fragment as B, renderList as L, createTextVNode as q, unref as M, normalizeStyle as V, createApp as ae, h as re } from "vue";
-const oe = (g, a, o = {}) => {
-  if (!g) return "";
-  const s = a || Date.now(), v = new Date(g), d = s - v.getTime(), f = Math.floor(d / (1e3 * 60)), y = Math.floor(d / (1e3 * 60 * 60)), r = Math.floor(d / (1e3 * 60 * 60 * 24)), _ = Math.floor(r / 7), w = Math.floor(r / 30), p = Math.floor(r / 365);
-  return f < 1 ? o["Just now"] ?? "Just now" : f < 60 ? `${f} ${o.minute ?? "minute"}${f > 1 ? "s" : ""} ${o.ago ?? "ago"}` : y < 24 ? `${y} ${o.hour ?? "hour"}${y > 1 ? "s" : ""} ${o.ago ?? "ago"}` : r < 7 ? `${r} ${o.day ?? "day"}${r > 1 ? "s" : ""} ${o.ago ?? "ago"}` : _ < 4 ? `${_} ${o.week ?? "week"}${_ > 1 ? "s" : ""} ${o.ago ?? "ago"}` : w < 12 ? `${w} ${o.month ?? "month"}${w > 1 ? "s" : ""} ${o.ago ?? "ago"}` : `${p} ${o.year ?? "year"}${p > 1 ? "s" : ""} ${o.ago ?? "ago"}`;
-}, se = (g, a) => {
-  switch (g) {
+import { ref as k, computed as P, onMounted as Z, onUnmounted as ee, createElementBlock as i, openBlock as c, createElementVNode as t, createVNode as te, normalizeClass as u, createCommentVNode as x, toDisplayString as f, Transition as ae, withCtx as re, withModifiers as N, Fragment as B, renderList as L, createTextVNode as F, unref as O, normalizeStyle as q, createApp as oe, h as se } from "vue";
+const ne = (d, a, r = {}) => {
+  if (!d) return "";
+  const m = a || Date.now(), g = new Date(d), o = m - g.getTime(), y = Math.floor(o / (1e3 * 60)), h = Math.floor(o / (1e3 * 60 * 60)), v = Math.floor(o / (1e3 * 60 * 60 * 24)), b = Math.floor(v / 7), s = Math.floor(v / 30), _ = Math.floor(v / 365);
+  return y < 1 ? r["Just now"] ?? "Just now" : y < 60 ? `${y} ${r.minute ?? "minute"}${y > 1 ? "s" : ""} ${r.ago ?? "ago"}` : h < 24 ? `${h} ${r.hour ?? "hour"}${h > 1 ? "s" : ""} ${r.ago ?? "ago"}` : v < 7 ? `${v} ${r.day ?? "day"}${v > 1 ? "s" : ""} ${r.ago ?? "ago"}` : b < 4 ? `${b} ${r.week ?? "week"}${b > 1 ? "s" : ""} ${r.ago ?? "ago"}` : s < 12 ? `${s} ${r.month ?? "month"}${s > 1 ? "s" : ""} ${r.ago ?? "ago"}` : `${_} ${r.year ?? "year"}${_ > 1 ? "s" : ""} ${r.ago ?? "ago"}`;
+}, le = (d, a) => {
+  switch (d) {
     case "success":
       return a ? "bg-green-900" : "bg-green-100";
     case "warning":
@@ -15,8 +15,8 @@ const oe = (g, a, o = {}) => {
     default:
       return a ? "bg-blue-900" : "bg-blue-100";
   }
-}, ne = (g, a) => {
-  switch (g) {
+}, ie = (d, a) => {
+  switch (d) {
     case "success":
       return a ? "text-green-300" : "text-green-600";
     case "warning":
@@ -27,13 +27,13 @@ const oe = (g, a, o = {}) => {
     default:
       return a ? "text-blue-300" : "text-blue-600";
   }
-}, le = (g) => {
-  if (!g || g === "#f3f4f6") return "#1f2937";
-  let a = g.replace("#", "");
+}, ce = (d) => {
+  if (!d || d === "#f3f4f6") return "#1f2937";
+  let a = d.replace("#", "");
   a.length === 3 && (a = a[0] + a[0] + a[1] + a[1] + a[2] + a[2]);
-  const o = parseInt(a.substring(0, 2), 16), s = parseInt(a.substring(2, 4), 16), v = parseInt(a.substring(4, 6), 16);
-  return (0.299 * o + 0.587 * s + 0.114 * v) / 255 > 0.5 ? "#1f2937" : "#ffffff";
-}, ie = () => [
+  const r = parseInt(a.substring(0, 2), 16), m = parseInt(a.substring(2, 4), 16), g = parseInt(a.substring(4, 6), 16);
+  return (0.299 * r + 0.587 * m + 0.114 * g) / 255 > 0.5 ? "#1f2937" : "#ffffff";
+}, ue = () => [
   {
     id: 1,
     title: "Tom",
@@ -102,10 +102,10 @@ const oe = (g, a, o = {}) => {
       { label: "Review", backgroundColor: "#ef4444", url: "#" }
     ]
   }
-], ce = {};
-class ue {
-  constructor(a = "", o = "notifications") {
-    this.baseURL = a, this.prefix = o, this.apiBase = `${a}/${o}`;
+], de = {};
+class U {
+  constructor(a = "", r = "notifications") {
+    this.baseURL = a, this.prefix = r, this.apiBase = `${a}/${r}`;
   }
   /**
    * Make HTTP request with proper error handling
@@ -113,26 +113,26 @@ class ue {
    * @param {Object} options - Fetch options
    * @returns {Promise} - Response data
    */
-  async request(a, o = {}) {
-    const s = {
+  async request(a, r = {}) {
+    const m = {
       headers: {
         "Content-Type": "application/json",
         Accept: "application/json",
         "X-Requested-With": "XMLHttpRequest",
-        ...o.headers
+        ...r.headers
       },
       credentials: "include",
       // Include cookies for Laravel session
-      ...o
-    }, v = document.querySelector('meta[name="csrf-token"]')?.getAttribute("content");
-    v && (s.headers["X-CSRF-TOKEN"] = v);
+      ...r
+    }, g = document.querySelector('meta[name="csrf-token"]')?.getAttribute("content");
+    g && (m.headers["X-CSRF-TOKEN"] = g);
     try {
-      const d = await fetch(a, s);
-      if (!d.ok)
-        throw new Error(`HTTP error! status: ${d.status}`);
-      return await d.json();
-    } catch (d) {
-      throw console.error("API request failed:", d), d;
+      const o = await fetch(a, m);
+      if (!o.ok)
+        throw new Error(`HTTP error! status: ${o.status}`);
+      return await o.json();
+    } catch (o) {
+      throw console.error("API request failed:", o), o;
     }
   }
   async getUserId() {
@@ -145,8 +145,8 @@ class ue {
    * @returns {Promise} - Notifications data
    */
   async getNotifications(a = {}) {
-    const o = new URLSearchParams(a).toString(), s = o ? `${this.apiBase}?${o}` : this.apiBase;
-    return this.request(s);
+    const r = new URLSearchParams(a).toString(), m = r ? `${this.apiBase}?${r}` : this.apiBase;
+    return this.request(m);
   }
   /**
    * Get notification count
@@ -163,8 +163,8 @@ class ue {
    * @returns {Promise} - Unread notifications data
    */
   async getUnreadNotifications(a = {}) {
-    const o = new URLSearchParams(a).toString(), s = o ? `${this.apiBase}/unread?${o}` : `${this.apiBase}/unread`;
-    return this.request(s);
+    const r = new URLSearchParams(a).toString(), m = r ? `${this.apiBase}/unread?${r}` : `${this.apiBase}/unread`;
+    return this.request(m);
   }
   /**
    * Get read notifications
@@ -173,8 +173,8 @@ class ue {
    * @returns {Promise} - Read notifications data
    */
   async getReadNotifications(a = {}) {
-    const o = new URLSearchParams(a).toString(), s = o ? `${this.apiBase}/read?${o}` : `${this.apiBase}/read`;
-    return this.request(s);
+    const r = new URLSearchParams(a).toString(), m = r ? `${this.apiBase}/read?${r}` : `${this.apiBase}/read`;
+    return this.request(m);
   }
   /**
    * Mark notification(s) as read
@@ -183,10 +183,10 @@ class ue {
    * @returns {Promise} - Response data
    */
   async markAsRead(a) {
-    const o = Array.isArray(a) ? a : [a];
+    const r = Array.isArray(a) ? a : [a];
     return this.request(`${this.apiBase}/read`, {
       method: "POST",
-      body: JSON.stringify({ ids: o })
+      body: JSON.stringify({ ids: r })
     });
   }
   /**
@@ -207,10 +207,10 @@ class ue {
    * @returns {Promise} - Response data
    */
   async deleteNotification(a) {
-    const o = Array.isArray(a) ? a : [a];
+    const r = Array.isArray(a) ? a : [a];
     return this.request(`${this.apiBase}/delete`, {
       method: "POST",
-      body: JSON.stringify({ ids: o })
+      body: JSON.stringify({ ids: r })
     });
   }
   /**
@@ -230,45 +230,46 @@ class ue {
    * @param {Array} notificationIds - Array of notification IDs
    * @returns {Promise} - Response data
    */
-  async batchOperation(a, o) {
+  async batchOperation(a, r) {
     switch (a) {
       case "read":
-        return this.markAsRead(o);
+        return this.markAsRead(r);
       case "delete":
-        return this.deleteNotification(o);
+        return this.deleteNotification(r);
       default:
         throw new Error(`Unknown operation: ${a}`);
     }
   }
 }
-const A = new ue(
+new U(
   window.location.origin,
   // Base URL
-  typeof process < "u" ? process.env?.MIX_NOTIFICATION_API_PREFIX : ce?.VITE_NOTIFICATION_API_PREFIX || "notifications"
+  typeof process < "u" ? process.env?.MIX_NOTIFICATION_API_PREFIX : de?.VITE_NOTIFICATION_API_PREFIX || "notifications"
   // Prefix - can be configured
-), U = (g, a) => {
-  const o = g.__vccOpts || g;
-  for (const [s, v] of a)
-    o[s] = v;
-  return o;
-}, de = {
+);
+const H = (d, a) => {
+  const r = d.__vccOpts || d;
+  for (const [m, g] of a)
+    r[m] = g;
+  return r;
+}, ge = {}, fe = {
   key: 0,
   class: "absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center font-semibold"
-}, ge = { class: "flex items-center" }, fe = { class: "flex items-center space-x-4" }, ve = ["onClick"], he = {
+}, ve = { class: "flex items-center" }, he = { class: "flex items-center space-x-4" }, ye = ["onClick"], me = {
   key: 0,
   class: "ml-2 bg-blue-500 text-white text-xs rounded-full px-2 py-1"
-}, ye = {
+}, pe = {
   key: 1,
   class: "p-6 text-center"
-}, me = { class: "text-red-500 mb-2" }, pe = { class: "mb-2" }, be = {
+}, be = { class: "text-red-500 mb-2" }, xe = { class: "mb-2" }, we = {
   key: 1,
   class: "mt-4"
-}, xe = { class: "text-sm" }, we = { key: 3 }, ke = ["onClick"], _e = { class: "w-10 h-10 mr-3 flex-shrink-0 flex items-center justify-center" }, Ce = ["src", "alt"], $e = {
+}, ke = { class: "text-sm" }, _e = { key: 3 }, Ce = ["onClick"], $e = { class: "w-10 h-10 mr-3 flex-shrink-0 flex items-center justify-center" }, Ae = ["src", "alt"], Te = {
   key: 0,
   "fill-rule": "evenodd",
   d: "M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z",
   "clip-rule": "evenodd"
-}, Ae = {
+}, Ne = {
   key: 1,
   "fill-rule": "evenodd",
   d: "M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z",
@@ -278,26 +279,26 @@ const A = new ue(
   "fill-rule": "evenodd",
   d: "M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z",
   "clip-rule": "evenodd"
-}, Ne = {
+}, Ie = {
   key: 3,
   "fill-rule": "evenodd",
   d: "M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z",
   "clip-rule": "evenodd"
-}, Te = {
+}, Oe = {
   key: 4,
   "fill-rule": "evenodd",
   d: "M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z",
   "clip-rule": "evenodd"
-}, Me = { class: "flex-1 min-w-0" }, Oe = { class: "flex items-center justify-between" }, Ie = { class: "flex items-center space-x-2" }, Ee = { class: "relative group" }, Be = ["onClick"], Le = ["onClick"], ze = ["onClick"], Pe = {
+}, Me = { class: "flex-1 min-w-0" }, Ee = { class: "flex items-center justify-between" }, Pe = { class: "flex items-center space-x-2" }, Be = { class: "relative group" }, Le = ["onClick"], ze = ["onClick"], De = ["onClick"], Re = {
   key: 0,
   class: "w-2 h-2 bg-blue-500 rounded-full"
-}, De = {
+}, Ve = {
   key: 0,
   class: "mt-2"
-}, je = { class: "flex items-center justify-between mb-1" }, Re = {
+}, je = { class: "flex items-center justify-between mb-1" }, qe = {
   key: 1,
   class: "flex flex-wrap gap-2 mt-3"
-}, Ve = ["onClick"], qe = { class: "flex items-center" }, Ue = {
+}, Fe = ["onClick"], Ue = { class: "flex items-center" }, He = {
   __name: "notification",
   props: {
     notifications: {
@@ -320,115 +321,123 @@ const A = new ue(
       type: Object,
       default: () => {
       }
+    },
+    notificationAPIPrefix: {
+      type: String,
+      default: ""
     }
   },
   emits: ["notification-read", "action-clicked", "all-read", "all-deleted"],
-  setup(g, { emit: a }) {
-    const o = g, s = (n) => o.locales[n] || n, v = a, d = k(!1), f = k(!1), y = k("unread"), r = k(!1), _ = k(null), w = k(Date.now()), p = k(!1), C = k(null), N = k(null), m = k([]), T = E(
-      () => m.value.filter((n) => !n.read_at).length
-    ), z = E(() => y.value === "unread" ? m.value.filter((n) => !n.read_at) : y.value === "read" ? m.value.filter((n) => n.read_at) : m.value), F = E(() => [
+  setup(d, { emit: a }) {
+    const r = d, m = r.notificationAPIPrefix || (typeof process < "u" ? process.env?.MIX_NOTIFICATION_API_PREFIX : ge?.VITE_NOTIFICATION_API_PREFIX || "notifications"), g = new U(
+      window.location.origin,
+      // Base URL
+      m
+    ), o = (n) => r.locales[n] || n, y = a, h = k(!1), v = k(!1), b = k("unread"), s = k(!1), _ = k(null), T = k(Date.now()), $ = k(!1), C = k(null), S = k(null), p = k([]), I = P(
+      () => p.value.filter((n) => !n.read_at).length
+    ), z = P(() => b.value === "unread" ? p.value.filter((n) => !n.read_at) : b.value === "read" ? p.value.filter((n) => n.read_at) : p.value), X = P(() => [
       {
         id: "unread",
         name: "New",
-        count: T.value
+        count: I.value
       },
       {
         id: "inbox",
         name: "All",
         count: 0
       }
-    ]), $ = async () => {
+    ]), A = async () => {
       try {
-        p.value = !0, C.value = null;
-        const n = await A.getNotifications();
-        m.value = n.data || n, console.log(m.value);
+        $.value = !0, C.value = null;
+        const n = await g.getNotifications();
+        p.value = n.data || n, console.log(p.value);
       } catch (n) {
-        C.value = s("Failed to load notifications"), console.error("Error loading notifications:", n), m.value = ie();
+        C.value = o("Failed to load notifications"), console.error("Error loading notifications:", n), p.value = ue();
       } finally {
-        p.value = !1;
+        $.value = !1;
       }
-    }, H = async () => {
-      d.value && f.value && (f.value = !1), !d.value && m.value.length === 0 && await $(), d.value = !d.value;
-    }, P = () => {
-      f.value = !f.value, f.value && window.scrollTo({ top: 0, behavior: "smooth" });
     }, J = async () => {
-      try {
-        p.value = !0, await A.markAllAsRead(), $(), v("all-read");
-      } catch (n) {
-        C.value = s("Failed to mark all as read"), console.error("Error marking all as read:", n);
-      } finally {
-        p.value = !1;
-      }
-    }, X = async () => {
-      if (confirm(s("Are you sure you want to delete all notifications? This action cannot be undone.")))
-        try {
-          p.value = !0, await A.deleteAllNotifications(), m.value = [], v("all-deleted");
-        } catch (n) {
-          C.value = s("Failed to delete all notifications"), console.error("Error deleting all notifications:", n);
-        } finally {
-          p.value = !1;
-        }
-    }, O = async (n) => {
-      try {
-        await A.markAsRead(n);
-        const l = m.value.find((e) => e.id === n);
-        l && (l.read_at = !0, v("notification-read", l));
-      } catch (l) {
-        C.value = s("Failed to mark notification as read"), console.error("Error marking notification as read:", l);
-      }
-    }, D = async (n) => {
-      try {
-        await A.deleteNotification(n);
-        const l = m.value.findIndex((e) => e.id === n);
-        l !== -1 && m.value.splice(l, 1);
-      } catch (l) {
-        C.value = s("Failed to delete notification"), console.error("Error deleting notification:", l);
-      }
+      h.value && v.value && (v.value = !1), !h.value && p.value.length === 0 && await A(), h.value = !h.value;
+    }, D = () => {
+      v.value = !v.value, v.value && window.scrollTo({ top: 0, behavior: "smooth" });
     }, W = async () => {
-      await $();
-    }, Y = async (n, l) => {
-      if (v("action-clicked", { action: n, notification: l }), l.read_at || await O(l.id), (n.label.toLowerCase() === s("accept") || n.label.toLowerCase() === s("decline")) && await D(l.id), n.url && n.url !== "#") {
+      try {
+        $.value = !0, await g.markAllAsRead(), A(), y("all-read");
+      } catch (n) {
+        C.value = o("Failed to mark all as read"), console.error("Error marking all as read:", n);
+      } finally {
+        $.value = !1;
+      }
+    }, Y = async () => {
+      if (confirm(o("Are you sure you want to delete all notifications? This action cannot be undone.")))
+        try {
+          $.value = !0, await g.deleteAllNotifications(), p.value = [], y("all-deleted");
+        } catch (n) {
+          C.value = o("Failed to delete all notifications"), console.error("Error deleting all notifications:", n);
+        } finally {
+          $.value = !1;
+        }
+    }, M = async (n) => {
+      try {
+        await g.markAsRead(n);
+        const l = p.value.find((e) => e.id === n);
+        l && (l.read_at = !0, y("notification-read", l));
+      } catch (l) {
+        C.value = o("Failed to mark notification as read"), console.error("Error marking notification as read:", l);
+      }
+    }, R = async (n) => {
+      try {
+        await g.deleteNotification(n);
+        const l = p.value.findIndex((e) => e.id === n);
+        l !== -1 && p.value.splice(l, 1);
+      } catch (l) {
+        C.value = o("Failed to delete notification"), console.error("Error deleting notification:", l);
+      }
+    }, K = async () => {
+      await A();
+    }, G = async (n, l) => {
+      if (y("action-clicked", { action: n, notification: l }), l.read_at || await M(l.id), (n.label.toLowerCase() === o("accept") || n.label.toLowerCase() === o("decline")) && await R(l.id), n.url && n.url !== "#") {
         const e = document.createElement("a");
         e.href = n.url, e.target = "_blank", e.rel = "noopener noreferrer", document.body.appendChild(e), e.click(), document.body.removeChild(e);
       }
-    }, K = (n) => {
-      N.value = N.value === n ? null : n;
-    }, j = (n) => {
-      _.value && !_.value.contains(n.target) && (f.value ? f.value = !1 : d.value = !1), N.value = null;
+    }, Q = (n) => {
+      S.value = S.value === n ? null : n;
+    }, V = (n) => {
+      _.value && !_.value.contains(n.target) && (v.value ? v.value = !1 : h.value = !1), S.value = null;
     };
-    let I = null;
-    return G(async () => {
-      const n = await A.getUserId();
+    let E = null;
+    return Z(async () => {
+      const n = await g.getUserId();
       if (!n) {
         console.error("User ID not found. Please ensure the user is authenticated.");
         return;
       }
-      if (document.addEventListener("click", j), window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", (e) => {
-        localStorage.getItem("notification-theme") || (r.value = e.matches);
-      }), await $(), !window.Echo) {
+      if (document.addEventListener("click", V), window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", (e) => {
+        localStorage.getItem("notification-theme") || (s.value = e.matches);
+      }), await A(), !window.Echo) {
         console.error("Laravel Echo is not defined. Please ensure it is properly imported and configured.");
         return;
       }
-      console.log("Setting up Echo channel listener...", o.user_id || n || 1);
-      const l = Echo.private("App.Models.User." + (o.user_id || n || 1));
+      console.log("Setting up Echo channel listener...", r.user_id || n || 1);
+      const l = Echo.private("App.Models.User." + (r.user_id || n || 1));
       l.subscribed(() => {
         console.log("✅ Successfully subscribed to notifications channel");
       }), l.error((e) => {
         console.error("🚨 Channel subscription error:", e);
       }), l.notification((e) => {
-        const x = m.value.find((R) => R.id === e.id);
-        x ? Object.assign(x, e) : (m.value.unshift(e), setTimeout(async () => {
-          await $(), setTimeout(async () => {
-            await $();
+        const w = p.value.find((j) => j.id === e.id);
+        w ? Object.assign(w, e) : (p.value.unshift(e), setTimeout(async () => {
+          await A(), setTimeout(async () => {
+            await A();
           }, 5 * 60 * 1e3);
         }, 60 * 1e3));
-      }), I = setInterval(() => {
-        w.value = Date.now();
+      }), E = setInterval(() => {
+        T.value = Date.now();
       }, 6e4);
-    }), Q(() => {
-      if (document.removeEventListener("click", j), window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").removeEventListener("change", () => {
-      }), I && clearInterval(I), window.Echo) {
-        const n = Echo.private("App.Models.User." + (o.user_id || userId));
+    }), ee(() => {
+      if (document.removeEventListener("click", V), window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").removeEventListener("change", () => {
+      }), E && clearInterval(E), window.Echo) {
+        const n = Echo.private("App.Models.User." + (r.user_id || userId));
         n.unlisten(".notification"), n.unsubscribe(), console.log("✅ Unsubscribed from notifications channel");
       }
     }), (n, l) => (c(), i("div", {
@@ -437,12 +446,12 @@ const A = new ue(
       ref: _
     }, [
       t("button", {
-        onClick: H,
+        onClick: J,
         class: u(["relative p-2 cursor-pointer focus:outline-none rounded-full transition-colors", {
-          "bg-blue-50 text-gray-600 hover:text-gray-800": d.value && !r.value,
-          "bg-blue-900/20 text-gray-300 hover:text-gray-100": d.value && r.value,
-          "text-gray-600 hover:text-gray-800": !d.value && !r.value,
-          "text-gray-300 hover:text-gray-100": !d.value && r.value
+          "bg-blue-50 text-gray-600 hover:text-gray-800": h.value && !s.value,
+          "bg-blue-900/20 text-gray-300 hover:text-gray-100": h.value && s.value,
+          "text-gray-600 hover:text-gray-800": !h.value && !s.value,
+          "text-gray-300 hover:text-gray-100": !h.value && s.value
         }])
       }, [
         l[3] || (l[3] = t("svg", {
@@ -458,9 +467,9 @@ const A = new ue(
             d: "M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"
           })
         ], -1)),
-        T.value > 0 ? (c(), i("span", de, h(T.value > 99 ? "99+" : T.value), 1)) : b("", !0)
+        I.value > 0 ? (c(), i("span", fe, f(I.value > 99 ? "99+" : I.value), 1)) : x("", !0)
       ], 2),
-      Z(ee, {
+      te(ae, {
         "enter-active-class": "transition duration-200 ease-out",
         "enter-from-class": "transform scale-95 opacity-0",
         "enter-to-class": "transform scale-100 opacity-100",
@@ -468,33 +477,33 @@ const A = new ue(
         "leave-from-class": "transform scale-100 opacity-100",
         "leave-to-class": "transform scale-95 opacity-0"
       }, {
-        default: te(() => [
-          d.value ? (c(), i("div", {
+        default: re(() => [
+          h.value ? (c(), i("div", {
             key: 0,
             class: u([
               "z-50 shadow-xl border",
-              r.value ? "bg-gray-900 border-gray-700 text-white" : "bg-white border-gray-200",
-              f.value ? "fixed top-0 right-0 h-full flex flex-col w-2/5 rounded-l-lg overflow-hidden" : "absolute right-0 mt-2 w-96 rounded-lg"
+              s.value ? "bg-gray-900 border-gray-700 text-white" : "bg-white border-gray-200",
+              v.value ? "fixed top-0 right-0 h-full flex flex-col w-2/5 rounded-l-lg overflow-hidden" : "absolute right-0 mt-2 w-96 rounded-lg"
             ]),
-            onClick: l[2] || (l[2] = S(() => {
+            onClick: l[2] || (l[2] = N(() => {
             }, ["stop"]))
           }, [
             t("div", {
-              class: u(["flex items-center justify-between p-4", r.value ? "border-b border-gray-700" : "border-b border-gray-200"])
+              class: u(["flex items-center justify-between p-4", s.value ? "border-b border-gray-700" : "border-b border-gray-200"])
             }, [
-              t("div", ge, [
+              t("div", ve, [
                 t("h3", {
-                  class: u(["text-lg font-semibold", r.value ? "text-white" : "text-gray-900"])
-                }, h(s("Notifications")), 3),
-                f.value ? (c(), i("span", {
+                  class: u(["text-lg font-semibold", s.value ? "text-white" : "text-gray-900"])
+                }, f(o("Notifications")), 3),
+                v.value ? (c(), i("span", {
                   key: 0,
-                  class: u(["ml-2 text-sm", r.value ? "text-gray-400" : "text-gray-500"])
-                }, "(" + h(m.value.length) + ")", 3)) : b("", !0)
+                  class: u(["ml-2 text-sm", s.value ? "text-gray-400" : "text-gray-500"])
+                }, "(" + f(p.value.length) + ")", 3)) : x("", !0)
               ]),
-              t("div", fe, [
+              t("div", he, [
                 (c(), i("svg", {
                   "aria-label": "Mark all as read",
-                  onClick: J,
+                  onClick: W,
                   xmlns: "http://www.w3.org/2000/svg",
                   width: "24",
                   height: "24",
@@ -504,14 +513,14 @@ const A = new ue(
                   "stroke-width": "2",
                   "stroke-linecap": "round",
                   "stroke-linejoin": "round",
-                  class: u([r.value ? "text-gray-200 hover:text-gray-400" : "text-gray-500 hover:text-gray-700", "lucide w-6 h-6 cursor-pointer p-1 rounded-full lucide-check-check-icon lucide-check-check"])
+                  class: u([s.value ? "text-gray-200 hover:text-gray-400" : "text-gray-500 hover:text-gray-700", "lucide w-6 h-6 cursor-pointer p-1 rounded-full lucide-check-check-icon lucide-check-check"])
                 }, l[4] || (l[4] = [
                   t("path", { d: "M18 6 7 17l-5-5" }, null, -1),
                   t("path", { d: "m22 10-7.5 7.5L13 16" }, null, -1)
                 ]), 2)),
                 (c(), i("svg", {
                   "aria-label": "Delete all notifications",
-                  onClick: X,
+                  onClick: Y,
                   xmlns: "http://www.w3.org/2000/svg",
                   width: "24",
                   height: "24",
@@ -521,16 +530,16 @@ const A = new ue(
                   "stroke-width": "2",
                   "stroke-linecap": "round",
                   "stroke-linejoin": "round",
-                  class: u([r.value ? "text-gray-400 hover:text-gray-200" : "text-gray-500 hover:text-gray-700", "lucide cursor-pointer p-1 rounded-full w-6 h-6 lucide-trash-icon lucide-trash"])
+                  class: u([s.value ? "text-gray-400 hover:text-gray-200" : "text-gray-500 hover:text-gray-700", "lucide cursor-pointer p-1 rounded-full w-6 h-6 lucide-trash-icon lucide-trash"])
                 }, l[5] || (l[5] = [
                   t("path", { d: "M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6" }, null, -1),
                   t("path", { d: "M3 6h18" }, null, -1),
                   t("path", { d: "M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" }, null, -1)
                 ]), 2)),
-                f.value ? (c(), i("button", {
+                v.value ? (c(), i("button", {
                   key: 0,
-                  onClick: P,
-                  class: u(r.value ? "p-1 rounded-full hover:bg-gray-700" : "p-1 rounded-full hover:bg-gray-100"),
+                  onClick: D,
+                  class: u(s.value ? "p-1 rounded-full hover:bg-gray-700" : "p-1 rounded-full hover:bg-gray-100"),
                   "aria-label": "Close expanded view"
                 }, l[6] || (l[6] = [
                   t("svg", {
@@ -546,29 +555,29 @@ const A = new ue(
                       d: "M6 18L18 6M6 6l12 12"
                     })
                   ], -1)
-                ]), 2)) : b("", !0)
+                ]), 2)) : x("", !0)
               ])
             ], 2),
             t("div", {
-              class: u(["flex", r.value ? "border-b border-gray-700" : "border-b border-gray-200"])
+              class: u(["flex", s.value ? "border-b border-gray-700" : "border-b border-gray-200"])
             }, [
-              (c(!0), i(B, null, L(F.value, (e) => (c(), i("button", {
+              (c(!0), i(B, null, L(X.value, (e) => (c(), i("button", {
                 key: e.id,
-                onClick: (x) => y.value = e.id,
+                onClick: (w) => b.value = e.id,
                 class: u(["flex-1 px-4 py-3 text-sm font-medium text-center border-b-2 transition-colors", [
-                  y.value === e.id ? r.value ? "border-blue-500 text-blue-400 bg-blue-900/20" : "border-blue-500 text-blue-600 bg-blue-50" : r.value ? "border-transparent text-gray-400 hover:text-gray-200 hover:bg-gray-800" : "border-transparent text-gray-500 hover:text-gray-700 hover:bg-gray-50"
+                  b.value === e.id ? s.value ? "border-blue-500 text-blue-400 bg-blue-900/20" : "border-blue-500 text-blue-600 bg-blue-50" : s.value ? "border-transparent text-gray-400 hover:text-gray-200 hover:bg-gray-800" : "border-transparent text-gray-500 hover:text-gray-700 hover:bg-gray-50"
                 ]])
               }, [
-                q(h(s(e.name)) + " ", 1),
-                e.count > 0 ? (c(), i("span", he, h(e.count), 1)) : b("", !0)
-              ], 10, ve))), 128))
+                F(f(o(e.name)) + " ", 1),
+                e.count > 0 ? (c(), i("span", me, f(e.count), 1)) : x("", !0)
+              ], 10, ye))), 128))
             ], 2),
             t("div", {
-              class: u(["overflow-y-auto", f.value ? "h-full" : "max-h-96"])
+              class: u(["overflow-y-auto", v.value ? "h-full" : "max-h-96"])
             }, [
-              p.value ? (c(), i("div", {
+              $.value ? (c(), i("div", {
                 key: 0,
-                class: u(["p-6 text-center", r.value ? "text-gray-400" : "text-gray-500"])
+                class: u(["p-6 text-center", s.value ? "text-gray-400" : "text-gray-500"])
               }, [
                 l[7] || (l[7] = t("svg", {
                   class: "animate-spin -ml-1 mr-3 h-5 w-5 inline",
@@ -590,25 +599,25 @@ const A = new ue(
                     d: "M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
                   })
                 ], -1)),
-                t("span", null, h(s("Loading notifications")) + "...", 1)
-              ], 2)) : C.value ? (c(), i("div", ye, [
-                t("div", me, h(C.value), 1),
+                t("span", null, f(o("Loading notifications")) + "...", 1)
+              ], 2)) : C.value ? (c(), i("div", pe, [
+                t("div", be, f(C.value), 1),
                 t("button", {
-                  onClick: W,
-                  class: u(["text-sm px-4 py-2 rounded transition-colors", r.value ? "bg-gray-700 hover:bg-gray-600 text-gray-200" : "bg-gray-100 hover:bg-gray-200 text-gray-700"])
-                }, h(s("Try Again")), 3)
+                  onClick: K,
+                  class: u(["text-sm px-4 py-2 rounded transition-colors", s.value ? "bg-gray-700 hover:bg-gray-600 text-gray-200" : "bg-gray-100 hover:bg-gray-200 text-gray-700"])
+                }, f(o("Try Again")), 3)
               ])) : z.value.length === 0 ? (c(), i("div", {
                 key: 2,
-                class: u(["p-6 text-center", r.value ? "text-gray-400" : "text-gray-500"])
+                class: u(["p-6 text-center", s.value ? "text-gray-400" : "text-gray-500"])
               }, [
-                t("div", pe, h(y.value === "unread" ? s("No unread notifications") : y.value === "read" ? s("No read notifications") : m.value.length === 0 ? s("No notifications yet") : s("No notifications")), 1),
-                y.value !== "inbox" && m.value.length > 0 ? (c(), i("button", {
+                t("div", xe, f(b.value === "unread" ? o("No unread notifications") : b.value === "read" ? o("No read notifications") : p.value.length === 0 ? o("No notifications yet") : o("No notifications")), 1),
+                b.value !== "inbox" && p.value.length > 0 ? (c(), i("button", {
                   key: 0,
-                  onClick: l[0] || (l[0] = (e) => y.value = "inbox"),
+                  onClick: l[0] || (l[0] = (e) => b.value = "inbox"),
                   class: "text-sm text-blue-500 hover:text-blue-600"
-                }, h(s("View all notifications")), 1)) : m.value.length === 0 ? (c(), i("div", be, [
+                }, f(o("View all notifications")), 1)) : p.value.length === 0 ? (c(), i("div", we, [
                   (c(), i("svg", {
-                    class: u(["w-12 h-12 mx-auto mb-4 opacity-50", r.value ? "text-gray-600" : "text-gray-300"]),
+                    class: u(["w-12 h-12 mx-auto mb-4 opacity-50", s.value ? "text-gray-600" : "text-gray-300"]),
                     fill: "none",
                     stroke: "currentColor",
                     viewBox: "0 0 24 24"
@@ -620,92 +629,92 @@ const A = new ue(
                       d: "M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"
                     }, null, -1)
                   ]), 2)),
-                  t("p", xe, h(s("You're all caught up!")), 1)
-                ])) : b("", !0)
-              ], 2)) : (c(), i("div", we, [
+                  t("p", ke, f(o("You're all caught up!")), 1)
+                ])) : x("", !0)
+              ], 2)) : (c(), i("div", _e, [
                 (c(!0), i(B, null, L(z.value, (e) => (c(), i("div", {
                   key: e.id,
-                  onClick: (x) => O(e.id),
+                  onClick: (w) => M(e.id),
                   class: u(["flex items-start cursor-pointer p-4 transition-colors", [
                     { "border-b last:border-b-0": !0 },
-                    r.value ? { "hover:bg-gray-800 border-gray-700": !0, "bg-blue-900/10": !e.read_at } : { "hover:bg-gray-50 border-gray-100": !0, "bg-blue-50": !e.read_at }
+                    s.value ? { "hover:bg-gray-800 border-gray-700": !0, "bg-blue-900/10": !e.read_at } : { "hover:bg-gray-50 border-gray-100": !0, "bg-blue-50": !e.read_at }
                   ]])
                 }, [
-                  t("div", _e, [
+                  t("div", $e, [
                     e.avatar ? (c(), i("img", {
                       key: 0,
                       src: e.avatar,
                       alt: e.title,
                       class: "w-10 h-10 rounded-full"
-                    }, null, 8, Ce)) : (c(), i("div", {
+                    }, null, 8, Ae)) : (c(), i("div", {
                       key: 1,
-                      class: u(["w-10 h-10 rounded-full flex items-center justify-center", M(se)(e.status, r.value)])
+                      class: u(["w-10 h-10 rounded-full flex items-center justify-center", O(le)(e.status, s.value)])
                     }, [
                       (c(), i("svg", {
-                        class: u(["w-5 h-5", M(ne)(e.status, r.value)]),
+                        class: u(["w-5 h-5", O(ie)(e.status, s.value)]),
                         fill: "currentColor",
                         viewBox: "0 0 20 20"
                       }, [
-                        e.status === "info" ? (c(), i("path", $e)) : e.status === "success" ? (c(), i("path", Ae)) : e.status === "warning" ? (c(), i("path", Se)) : e.status === "error" ? (c(), i("path", Ne)) : (c(), i("path", Te))
+                        e.status === "info" ? (c(), i("path", Te)) : e.status === "success" ? (c(), i("path", Ne)) : e.status === "warning" ? (c(), i("path", Se)) : e.status === "error" ? (c(), i("path", Ie)) : (c(), i("path", Oe))
                       ], 2))
                     ], 2))
                   ]),
                   t("div", Me, [
-                    t("div", Oe, [
+                    t("div", Ee, [
                       t("p", {
-                        class: u(["text-sm font-medium", r.value ? "text-gray-100" : "text-gray-900"])
-                      }, h(s(e.title)), 3),
-                      t("div", Ie, [
+                        class: u(["text-sm font-medium", s.value ? "text-gray-100" : "text-gray-900"])
+                      }, f(o(e.title)), 3),
+                      t("div", Pe, [
                         t("span", {
-                          class: u(["text-xs", r.value ? "text-gray-400" : "text-gray-500"])
-                        }, h(M(oe)(e.created_at, w.value.value, g.locales)), 3),
-                        t("div", Ee, [
+                          class: u(["text-xs", s.value ? "text-gray-400" : "text-gray-500"])
+                        }, f(O(ne)(e.created_at, T.value.value, d.locales)), 3),
+                        t("div", Be, [
                           t("button", {
-                            class: u(["p-1 rounded opacity-0 group-hover:opacity-100 transition-opacity", r.value ? "hover:bg-gray-700" : "hover:bg-gray-100"]),
-                            onClick: S((x) => K(e.id), ["stop"])
+                            class: u(["p-1 rounded opacity-0 group-hover:opacity-100 transition-opacity", s.value ? "hover:bg-gray-700" : "hover:bg-gray-100"]),
+                            onClick: N((w) => Q(e.id), ["stop"])
                           }, [
                             (c(), i("svg", {
-                              class: u(["w-4 h-4", r.value ? "text-gray-400" : "text-gray-500"]),
+                              class: u(["w-4 h-4", s.value ? "text-gray-400" : "text-gray-500"]),
                               fill: "currentColor",
                               viewBox: "0 0 20 20"
                             }, l[9] || (l[9] = [
                               t("path", { d: "M10 6a2 2 0 110-4 2 2 0 010 4zM10 12a2 2 0 110-4 2 2 0 010 4zM10 18a2 2 0 110-4 2 2 0 010 4z" }, null, -1)
                             ]), 2))
-                          ], 10, Be),
-                          N.value === e.id ? (c(), i("div", {
+                          ], 10, Le),
+                          S.value === e.id ? (c(), i("div", {
                             key: 0,
-                            class: u(["absolute right-0 mt-1 w-40 rounded-md shadow-lg z-10", r.value ? "bg-gray-800 border border-gray-700" : "bg-white border border-gray-200"]),
-                            onClick: l[1] || (l[1] = S(() => {
+                            class: u(["absolute right-0 mt-1 w-40 rounded-md shadow-lg z-10", s.value ? "bg-gray-800 border border-gray-700" : "bg-white border border-gray-200"]),
+                            onClick: l[1] || (l[1] = N(() => {
                             }, ["stop"]))
                           }, [
-                            e.read_at ? b("", !0) : (c(), i("button", {
+                            e.read_at ? x("", !0) : (c(), i("button", {
                               key: 0,
-                              onClick: (x) => O(e.id),
-                              class: u(["w-full text-left px-4 py-2 text-sm hover:bg-opacity-80 transition-colors", r.value ? "text-gray-200 hover:bg-gray-700" : "text-gray-700 hover:bg-gray-100"])
-                            }, h(s("Mark as Read")), 11, Le)),
+                              onClick: (w) => M(e.id),
+                              class: u(["w-full text-left px-4 py-2 text-sm hover:bg-opacity-80 transition-colors", s.value ? "text-gray-200 hover:bg-gray-700" : "text-gray-700 hover:bg-gray-100"])
+                            }, f(o("Mark as Read")), 11, ze)),
                             t("button", {
-                              onClick: (x) => D(e.id),
-                              class: u(["w-full text-left px-4 py-2 text-sm text-red-500 hover:bg-opacity-80 transition-colors", r.value ? "hover:bg-gray-700" : "hover:bg-gray-100"])
-                            }, h(s("Delete")), 11, ze)
-                          ], 2)) : b("", !0)
+                              onClick: (w) => R(e.id),
+                              class: u(["w-full text-left px-4 py-2 text-sm text-red-500 hover:bg-opacity-80 transition-colors", s.value ? "hover:bg-gray-700" : "hover:bg-gray-100"])
+                            }, f(o("Delete")), 11, De)
+                          ], 2)) : x("", !0)
                         ]),
-                        e.read_at ? b("", !0) : (c(), i("div", Pe))
+                        e.read_at ? x("", !0) : (c(), i("div", Re))
                       ])
                     ]),
                     t("p", {
-                      class: u(["text-sm mt-1", r.value ? "text-gray-300" : "text-gray-600"])
-                    }, h(e.message), 3),
-                    e.progress !== void 0 && e.progress !== null ? (c(), i("div", De, [
+                      class: u(["text-sm mt-1", s.value ? "text-gray-300" : "text-gray-600"])
+                    }, f(e.message), 3),
+                    e.progress !== void 0 && e.progress !== null ? (c(), i("div", Ve, [
                       t("div", je, [
                         t("span", {
-                          class: u(["text-xs", r.value ? "text-gray-400" : "text-gray-500"])
-                        }, h(s("Progress")), 3),
+                          class: u(["text-xs", s.value ? "text-gray-400" : "text-gray-500"])
+                        }, f(o("Progress")), 3),
                         t("span", {
-                          class: u(["text-xs font-medium", r.value ? "text-gray-300" : "text-gray-700"])
-                        }, h(e.progress) + "% ", 3)
+                          class: u(["text-xs font-medium", s.value ? "text-gray-300" : "text-gray-700"])
+                        }, f(e.progress) + "% ", 3)
                       ]),
                       t("div", {
-                        class: u(["w-full rounded-full h-2", r.value ? "bg-gray-700" : "bg-gray-200"])
+                        class: u(["w-full rounded-full h-2", s.value ? "bg-gray-700" : "bg-gray-200"])
                       }, [
                         t("div", {
                           class: u(["h-2 rounded-full progress-bar", [
@@ -716,28 +725,28 @@ const A = new ue(
                               "bg-green-500": e.status === "success"
                             }
                           ]]),
-                          style: V({ width: `${e.progress}%` })
+                          style: q({ width: `${e.progress}%` })
                         }, null, 6)
                       ], 2)
-                    ])) : b("", !0),
-                    e.actions ? (c(), i("div", Re, [
-                      (c(!0), i(B, null, L(e.actions, (x) => (c(), i("button", {
-                        key: x.label,
-                        onClick: S((R) => Y(x, e), ["stop"]),
+                    ])) : x("", !0),
+                    e.actions ? (c(), i("div", qe, [
+                      (c(!0), i(B, null, L(e.actions, (w) => (c(), i("button", {
+                        key: w.label,
+                        onClick: N((j) => G(w, e), ["stop"]),
                         class: "px-3 py-1 text-xs font-medium rounded transition-colors",
-                        style: V({
-                          backgroundColor: x.backgroundColor || "#f3f4f6",
-                          color: M(le)(x.backgroundColor)
+                        style: q({
+                          backgroundColor: w.backgroundColor || "#f3f4f6",
+                          color: O(ce)(w.backgroundColor)
                         })
-                      }, h(s(x.label)), 13, Ve))), 128))
-                    ])) : b("", !0),
+                      }, f(o(w.label)), 13, Fe))), 128))
+                    ])) : x("", !0),
                     e.attachment ? (c(), i("div", {
                       key: 2,
-                      class: u(["mt-3 p-2 rounded border", r.value ? "bg-gray-800 border-gray-700" : "bg-gray-50 border-gray-200"])
+                      class: u(["mt-3 p-2 rounded border", s.value ? "bg-gray-800 border-gray-700" : "bg-gray-50 border-gray-200"])
                     }, [
-                      t("div", qe, [
+                      t("div", Ue, [
                         (c(), i("svg", {
-                          class: u(["w-4 h-4 mr-2", r.value ? "text-gray-400" : "text-gray-500"]),
+                          class: u(["w-4 h-4 mr-2", s.value ? "text-gray-400" : "text-gray-500"]),
                           fill: "none",
                           stroke: "currentColor",
                           viewBox: "0 0 24 24"
@@ -750,32 +759,32 @@ const A = new ue(
                           }, null, -1)
                         ]), 2)),
                         t("span", {
-                          class: u(["text-sm", r.value ? "text-gray-300" : "text-gray-700"])
-                        }, h(e.attachment), 3)
+                          class: u(["text-sm", s.value ? "text-gray-300" : "text-gray-700"])
+                        }, f(e.attachment), 3)
                       ])
-                    ], 2)) : b("", !0)
+                    ], 2)) : x("", !0)
                   ])
-                ], 10, ke))), 128))
+                ], 10, Ce))), 128))
               ]))
             ], 2),
             t("div", {
-              class: u(["p-4", r.value ? "border-t border-gray-700" : "border-t border-gray-200"])
+              class: u(["p-4", s.value ? "border-t border-gray-700" : "border-t border-gray-200"])
             }, [
               t("button", {
-                onClick: P,
-                class: u(["w-full text-center text-sm font-medium", r.value ? "text-blue-400 hover:text-blue-300" : "text-blue-600 hover:text-blue-800"])
-              }, h(f.value ? s("Collapse View") : s("View all notifications")), 3)
+                onClick: D,
+                class: u(["w-full text-center text-sm font-medium", s.value ? "text-blue-400 hover:text-blue-300" : "text-blue-600 hover:text-blue-800"])
+              }, f(v.value ? o("Collapse View") : o("View all notifications")), 3)
             ], 2)
-          ], 2)) : b("", !0)
+          ], 2)) : x("", !0)
         ]),
         _: 1
       })
     ], 512));
   }
-}, Ze = /* @__PURE__ */ U(Ue, [["__scopeId", "data-v-1c046043"]]), Fe = { class: "confirmation-content" }, He = { class: "confirmation-title" }, Je = { class: "confirmation-message" }, Xe = { class: "confirmation-actions" }, We = ["disabled"], Ye = {
+}, tt = /* @__PURE__ */ H(He, [["__scopeId", "data-v-d820f11a"]]), Xe = { class: "confirmation-content" }, Je = { class: "confirmation-title" }, We = { class: "confirmation-message" }, Ye = { class: "confirmation-actions" }, Ke = ["disabled"], Ge = {
   key: 0,
   class: "loading-spinner"
-}, Ke = {
+}, Qe = {
   __name: "confirmation",
   props: {
     title: {
@@ -802,7 +811,7 @@ const A = new ue(
       type: String,
       default: "danger",
       // 'danger', 'warning', 'success', 'primary'
-      validator: (g) => ["danger", "warning", "success", "primary"].includes(g)
+      validator: (d) => ["danger", "warning", "success", "primary"].includes(d)
     },
     closeOnOverlayClick: {
       type: Boolean,
@@ -810,116 +819,116 @@ const A = new ue(
     }
   },
   emits: ["confirm", "cancel", "close"],
-  setup(g, { expose: a, emit: o }) {
-    const s = g, v = o, d = k(!0), f = k(!1), y = async () => {
-      f.value = !0;
+  setup(d, { expose: a, emit: r }) {
+    const m = d, g = r, o = k(!0), y = k(!1), h = async () => {
+      y.value = !0;
       try {
-        await v("confirm");
+        await g("confirm");
       } finally {
-        f.value = !1;
+        y.value = !1;
       }
-    }, r = () => {
-      v("cancel"), w();
-    }, _ = () => {
-      s.closeOnOverlayClick && r();
-    }, w = () => {
-      d.value = !1, v("close");
+    }, v = () => {
+      g("cancel"), s();
+    }, b = () => {
+      m.closeOnOverlayClick && v();
+    }, s = () => {
+      o.value = !1, g("close");
     };
     return a({
-      close: w,
+      close: s,
       show: () => {
-        d.value = !0;
+        o.value = !0;
       }
-    }), (p, C) => d.value ? (c(), i("div", {
+    }), (_, T) => o.value ? (c(), i("div", {
       key: 0,
       class: "confirmation-overlay",
-      onClick: _
+      onClick: b
     }, [
       t("div", {
         class: "confirmation-dialog",
-        onClick: C[0] || (C[0] = S(() => {
+        onClick: T[0] || (T[0] = N(() => {
         }, ["stop"]))
       }, [
-        t("div", Fe, [
-          t("h3", He, h(g.title), 1),
-          t("p", Je, h(g.message), 1)
-        ]),
         t("div", Xe, [
+          t("h3", Je, f(d.title), 1),
+          t("p", We, f(d.message), 1)
+        ]),
+        t("div", Ye, [
           t("button", {
             type: "button",
             class: "btn btn-cancel",
-            onClick: r
-          }, h(g.cancelText), 1),
+            onClick: v
+          }, f(d.cancelText), 1),
           t("button", {
             type: "button",
             class: "btn btn-confirm",
-            onClick: y,
-            disabled: f.value
+            onClick: h,
+            disabled: y.value
           }, [
-            f.value ? (c(), i("span", Ye)) : b("", !0),
-            q(" " + h(f.value ? g.loadingText : g.confirmText), 1)
-          ], 8, We)
+            y.value ? (c(), i("span", Ge)) : x("", !0),
+            F(" " + f(y.value ? d.loadingText : d.confirmText), 1)
+          ], 8, Ke)
         ])
       ])
-    ])) : b("", !0);
+    ])) : x("", !0);
   }
-}, Ge = /* @__PURE__ */ U(Ke, [["__scopeId", "data-v-c367d6fe"]]);
-function et() {
-  const g = (v = {}) => new Promise((d, f) => {
-    const y = document.createElement("div");
-    document.body.appendChild(y);
-    const _ = { ...{
+}, Ze = /* @__PURE__ */ H(Qe, [["__scopeId", "data-v-c367d6fe"]]);
+function at() {
+  const d = (g = {}) => new Promise((o, y) => {
+    const h = document.createElement("div");
+    document.body.appendChild(h);
+    const b = { ...{
       title: "Confirm Action",
       message: "Are you sure you want to proceed?",
       confirmText: "Confirm",
       cancelText: "Cancel",
       confirmType: "danger",
       closeOnOverlayClick: !0
-    }, ...v }, w = ae({
+    }, ...g }, s = oe({
       render() {
-        return re(Ge, {
-          ..._,
+        return se(Ze, {
+          ...b,
           onConfirm: () => {
-            p(), d(!0);
+            _(), o(!0);
           },
           onCancel: () => {
-            p(), d(!1);
+            _(), o(!1);
           },
           onClose: () => {
-            p(), d(!1);
+            _(), o(!1);
           }
         });
       }
-    }), p = () => {
+    }), _ = () => {
       setTimeout(() => {
-        w.unmount(), y.parentNode && y.parentNode.removeChild(y);
+        s.unmount(), h.parentNode && h.parentNode.removeChild(h);
       }, 200);
     };
-    w.mount(y);
+    s.mount(h);
   });
   return {
-    showConfirmation: g,
-    confirmDelete: (v = "All your photos will be permanently removed and you won't be able to see them again, including the ones you've shared with your friends.") => g({
+    showConfirmation: d,
+    confirmDelete: (g = "All your photos will be permanently removed and you won't be able to see them again, including the ones you've shared with your friends.") => d({
       title: "You're about to delete your account",
-      message: v,
+      message: g,
       confirmText: "Delete",
       confirmType: "danger"
     }),
-    confirmAction: (v, d, f = "Confirm") => g({
-      title: v,
-      message: d,
-      confirmText: f,
+    confirmAction: (g, o, y = "Confirm") => d({
+      title: g,
+      message: o,
+      confirmText: y,
       confirmType: "primary"
     }),
-    confirmWarning: (v, d, f = "Proceed") => g({
-      title: v,
-      message: d,
-      confirmText: f,
+    confirmWarning: (g, o, y = "Proceed") => d({
+      title: g,
+      message: o,
+      confirmText: y,
       confirmType: "warning"
     })
   };
 }
 export {
-  Ze as default,
-  et as useConfirmation
+  tt as default,
+  at as useConfirmation
 };

@@ -316,7 +316,7 @@ import {
     getContrastColor,
     createSampleNotifications
 } from './utils/notificationUtils.js';
-import notificationAPI from './api/notificationAPI.js';
+import { NotificationAPI } from './api/notificationAPI.js';
 
 // Props
 const props = defineProps({
@@ -337,8 +337,21 @@ const props = defineProps({
     locales: {
         type: Object,
         default: () => { }
-    }
+    },
+    notificationAPIPrefix: {
+        type: String,
+        default: ''
+    },
 });
+
+const prefix = props.notificationAPIPrefix || (typeof process !== "undefined"
+    ? process.env?.MIX_NOTIFICATION_API_PREFIX
+    : import.meta.env?.VITE_NOTIFICATION_API_PREFIX || "notifications");
+
+const notificationAPI = new NotificationAPI(
+    window.location.origin, // Base URL
+    prefix
+);
 
 const getLocale = (key) => {
     return props.locales[key] || key; // Fallback to key if locale not found
